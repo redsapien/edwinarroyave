@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Exclusiva | Edwin Arroyave</title>
+    
+    <!-- Favicon SVG con EA -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjQiIGZpbGw9IiMwMDY2ZmYiLz48dGV4dCB4PSI1MCIgeT0iNjUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI0MCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVBPC90ZXh0Pjwvc3ZnPg==">
+
+    <!-- Fuentes Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+           VARIABLES - ESTILO "CONCESIONARIO PRO" (Carbono, Metal y Azul Eléctrico)
+           ========================================================================== */
+        :root {
+            --color-bg-deep: #050507;
+            --color-bg-panel: rgba(20, 22, 28, 0.7);
+            --color-bg-card: rgba(30, 34, 45, 0.4);
+            --color-primary: #0066ff;
+            --color-primary-glow: rgba(0, 102, 255, 0.5);
+            --color-white: #ffffff;
+            --color-text-muted: #8a919e;
+            --color-danger: #ff3333;
+            --color-success: #00cc66;
+            --color-warning: #ffb300;
+            --font-display: 'Syncopate', sans-serif;
+            --font-body: 'Montserrat', sans-serif;
+            --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg-deep);
+            color: var(--color-text-muted);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Fondo dinámico estilo reflejo de chapa metálica */
+        body::before {
+            content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 102, 255, 0.05) 0%, transparent 50%),
+                        linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.02) 45%, transparent 50%);
+            z-index: -1; pointer-events: none;
+        }
+
+        /* ==========================================================================
+           PRELOADER (Estilo Motor)
+           ========================================================================== */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--color-bg-deep); display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        .motor-loader {
+            width: 60px; height: 60px; border: 3px solid var(--color-primary-glow);
+            border-top: 3px solid var(--color-primary); border-radius: 50%;
+            animation: rev 0.8s linear infinite;
+            margin-bottom: 20px;
+        }
+        #preloader h2 {
+            font-family: var(--font-display); font-size: 1.2rem; color: var(--color-white);
+            letter-spacing: 2px; margin-bottom: 5px; text-shadow: 0 0 10px var(--color-primary-glow);
+        }
+        #preloader p {
+            font-family: var(--font-display); font-size: 0.7rem; color: var(--color-primary);
+            letter-spacing: 4px;
+        }
+        @keyframes rev { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* ==========================================================================
+           TIPOGRAFÍA Y UTILERÍA
+           ========================================================================== */
+        h1, h2, h3, h4 { color: var(--color-white); font-weight: 800; text-transform: uppercase; }
+        .text-accent { color: var(--color-primary); }
+        .container { width: 90%; max-width: 1100px; margin: 0 auto; padding: 5rem 0; }
+        
+        /* Animaciones Scroll */
+        .reveal { opacity: 0; transform: translateY(30px); transition: var(--transition); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* ==========================================================================
+           HERO SECTION
+           ========================================================================== */
+        .hero { min-height: 90vh; display: flex; align-items: center; position: relative; }
+        .badge {
+            display: inline-block; padding: 6px 12px; background: rgba(0, 102, 255, 0.1);
+            border-left: 3px solid var(--color-primary); font-size: 0.75rem;
+            font-weight: 600; letter-spacing: 2px; color: var(--color-primary);
+            text-transform: uppercase; margin-bottom: 1.5rem;
+        }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.5rem); line-height: 1.2; margin-bottom: 1rem; }
+        .hero p { font-size: 1.1rem; color: #b3b9c5; margin-bottom: 2.5rem; max-width: 600px; }
+
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 1rem 2rem; font-weight: 600; font-size: 1rem; text-decoration: none;
+            text-transform: uppercase; letter-spacing: 1px; cursor: pointer; border: none;
+            transition: var(--transition); border-radius: 4px;
+        }
+        .btn-primary {
+            background: var(--color-primary); color: #fff;
+            box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+            border: 1px solid var(--color-primary);
+        }
+        .btn-primary:hover {
+            background: transparent; color: var(--color-primary);
+            box-shadow: 0 0 30px rgba(0, 102, 255, 0.5);
+        }
+
+        /* ==========================================================================
+           EL PROBLEMA (DIAGNÓSTICO)
+           ========================================================================== */
+        .grid-2 { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+        @media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+        
+        .status-box {
+            background: var(--color-bg-panel); backdrop-filter: blur(10px);
+            border: var(--glass-border); border-left: 4px solid var(--color-danger);
+            padding: 2.5rem; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .status-list { list-style: none; margin-top: 1.5rem; }
+        .status-list li { margin-bottom: 1.2rem; display: flex; gap: 15px; color: #fff; font-weight: 500; align-items: flex-start; }
+        .status-list li svg { width: 24px; fill: var(--color-danger); flex-shrink: 0; margin-top: 3px; }
+        .status-list li span { display: block; font-size: 0.85rem; color: var(--color-text-muted); font-weight: 400; margin-top: 4px; }
+
+        /* ==========================================================================
+           QUÉ INCLUYE (EL ECOSISTEMA)
+           ========================================================================== */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .feature-card {
+            background: var(--color-bg-card); padding: 2rem; border-radius: 8px;
+            border: var(--glass-border); transition: var(--transition);
+            position: relative; overflow: hidden;
+        }
+        .feature-card:hover { border-color: var(--color-primary); transform: translateY(-5px); background: var(--color-bg-panel); }
+        .feature-card h3 { font-size: 1.1rem; margin: 1rem 0 0.5rem; color: #fff; }
+        .feature-card p { font-size: 0.9rem; }
+        .feature-icon { width: 40px; height: 40px; fill: var(--color-primary); }
+        
+        /* Highlight para el Panel */
+        .card-highlight { border-top: 3px solid var(--color-primary); }
+
+        /* ==========================================================================
+           LAS FASES Y LA INVERSIÓN
+           ========================================================================== */
+        .pricing-section { background: linear-gradient(to bottom, transparent, rgba(0, 102, 255, 0.03), transparent); padding: 4rem 0; }
+        .pricing-box { text-align: center; margin-bottom: 3rem; }
+        .price-display {
+            font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); color: var(--color-white);
+            margin: 1rem 0; text-shadow: 0 0 30px var(--color-primary-glow); line-height: 1;
+        }
+        .price-display span { font-size: 1rem; color: var(--color-primary); font-family: var(--font-body); display: block; margin-top: 10px; letter-spacing: 2px;}
+
+        .info-pill {
+            display: inline-block; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; color: #fff; margin-bottom: 2rem;
+        }
+
+        .phases { display: flex; flex-direction: column; gap: 1rem; max-width: 800px; margin: 0 auto 3rem; }
+        .phase-row {
+            display: grid; grid-template-columns: 1fr; gap: 1rem;
+            background: var(--color-bg-panel); padding: 1.8rem; border: var(--glass-border);
+            border-left: 3px solid var(--color-primary); border-radius: 8px;
+            transition: var(--transition);
+        }
+        @media (min-width: 600px) { .phase-row { grid-template-columns: 2fr 1fr; align-items: center; } }
+        .phase-row:hover { background: rgba(30, 34, 45, 0.8); }
+        .phase-title { font-weight: 800; color: #fff; font-size: 1.1rem; margin-bottom: 5px; }
+        .phase-desc { font-size: 0.85rem; color: var(--color-text-muted); }
+        .phase-price { font-weight: 800; color: var(--color-primary); font-size: 1.2rem; text-align: left; }
+        @media (min-width: 600px) { .phase-price { text-align: right; } }
+
+        /* ==========================================================================
+           MANTENIMIENTO Y ADS (Transparencia)
+           ========================================================================== */
+        .transparency-grid {
+            display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 800px; margin: 0 auto 4rem;
+        }
+        @media (min-width: 600px) { .transparency-grid { grid-template-columns: 1fr 1fr; } }
+        
+        .t-card {
+            background: rgba(0, 0, 0, 0.4); padding: 1.5rem; border-radius: 8px; border: 1px dashed rgba(255,255,255,0.1);
+        }
+        .t-card h4 { font-size: 0.9rem; color: var(--color-warning); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .t-card p { font-size: 0.85rem; }
+
+        footer { text-align: center; padding: 3rem 0; font-size: 0.8rem; border-top: var(--glass-border); background: #000; }
+    </style>
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="motor-loader"></div>
+        <h2>EA | EDWIN ARROYAVE</h2>
+        <p>CALIBRANDO ECOSISTEMA...</p>
+    </div>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="container reveal">
+            <div class="badge">Propuesta Estratégica</div>
+            <h1>Edwin, <br>es momento de <span class="text-accent">acelerar.</span></h1>
+            <p>Su inventario es premium, pero su presencia digital actual no refleja esa calidad ni convierte como debería. Construyamos un ecosistema robusto, inmersivo y diseñado 100% para vender.</p>
+            <a href="#diagnostico" class="btn btn-primary">Ver Diagnóstico y Solución</a>
+        </div>
+    </header>
+
+    <!-- EL PROBLEMA -->
+    <section id="diagnostico">
+        <div class="container grid-2 reveal">
+            <div>
+                <h2>¿Cómo luce su perfil hoy? <br><span class="text-accent">Desconectado.</span></h2>
+                <p>Actualmente, sus clientes potenciales encuentran barreras en lugar de facilidades. Un comprador de alto valor necesita confianza inmediata, no un laberinto.</p>
+            </div>
+            <div class="status-box">
+                <h3 style="color: var(--color-danger); margin-bottom: 1rem; font-size: 1rem; letter-spacing: 1px;">DIAGNÓSTICO ACTUAL:</h3>
+                <ul class="status-list">
+                    <li>
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg> 
+                        <div>Página de Facebook "Muda"
+                            <span>Sus perfiles son solo botones sin un número de contacto claro a simple vista.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg> 
+                        <div>Falta de Sitio Web Propio
+                            <span>No hay un ecosistema cerrado que retenga la atención del cliente fuera de las distracciones de las redes sociales.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg> 
+                        <div>Biografía sin Optimizar
+                            <span>No comunica de forma inmersiva por qué deben comprarle a usted. Falta una estructura orientada a la conversión.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- LA SOLUCIÓN (ECOSISTEMA) -->
+    <section id="ecosistema">
+        <div class="container reveal">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2>El Ecosistema <span class="text-accent">Red Sapien</span></h2>
+                <p style="max-width: 650px; margin: 1rem auto 0;">No le ofrezco una página web común. Es un ecosistema moderno, único y automático que trabaja para usted las 24 horas.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24"><path d="M4 6h16v12H4zm2 2v8h12V8zm2 2h8v2H8z"/></svg>
+                    <h3>Showroom Digital Único</h3>
+                    <p>Una vitrina inmersiva con su propia identidad (Favicon EA, diseño robusto y fluido) donde el cliente solo se enfoca en sus vehículos.</p>
+                </div>
+                <div class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+                    <h3>Campaña de Tráfico Directo</h3>
+                    <p>Anuncios segmentados en Facebook e Instagram atacando su ciudad, su zona y directamente a sus clientes potenciales.</p>
+                </div>
+                <div class="feature-card card-highlight">
+                    <svg class="feature-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                    <h3>Panel de Control del Cliente</h3>
+                    <p>Un espacio privado para usted donde verá el estado del ecosistema, métricas de ventas y un <strong>Botón de Soporte inmediato con Red Sapien</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVERSIÓN Y FASES -->
+    <section class="pricing-section">
+        <div class="container reveal">
+            <div class="pricing-box">
+                <h2>Inversión del Ecosistema</h2>
+                <div class="info-pill">Único Pago • El sistema queda en automático</div>
+                <div class="price-display">396.000 <span>COP / PAGO TOTAL (Dividido en 3 fases)</span></div>
+            </div>
+
+            <!-- Fases -->
+            <div class="phases">
+                <div class="phase-row">
+                    <div>
+                        <div class="phase-title">Fase 1: Creación del Showroom & Dominio</div>
+                        <div class="phase-desc">Desarrollo de la estructura base, diseño robusto, preloader, favicon e integración de marca. Pago al ver su ecosistema en línea.</div>
+                    </div>
+                    <div class="phase-price">132.000 COP</div>
+                </div>
+                <div class="phase-row">
+                    <div>
+                        <div class="phase-title">Fase 2: Panel de Cliente & Conexión CRM</div>
+                        <div class="phase-desc">Activación de su panel de control privado, botón de soporte Red Sapien y configuración de captura de prospectos.</div>
+                    </div>
+                    <div class="phase-price">132.000 COP</div>
+                </div>
+                <div class="phase-row">
+                    <div>
+                        <div class="phase-title">Fase 3: Lanzamiento Ads & Automatización</div>
+                        <div class="phase-desc">Encendido de campañas en su zona y entrega del motor funcionando al 100% en automático.</div>
+                    </div>
+                    <div class="phase-price">132.000 COP</div>
+                </div>
+            </div>
+
+            <!-- Transparencia Operativa -->
+            <div class="transparency-grid">
+                <div class="t-card">
+                    <h4>
+                        <svg width="18" viewBox="0 0 24 24" fill="var(--color-warning)"><path d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>
+                        Presupuesto de Campaña (Ads)
+                    </h4>
+                    <p>Para la pauta en Facebook/Instagram se requiere un presupuesto mínimo de <strong>$13.000 a $19.000 COP al día</strong>. Usted lo recarga y paga directamente desde su Nequi a Facebook. Sin intermediarios.</p>
+                </div>
+                <div class="t-card">
+                    <h4>
+                        <svg width="18" viewBox="0 0 24 24" fill="var(--color-warning)"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.06-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.73,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.06,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 C10.22,21.59,10.42,21.76,10.66,21.76h3.84c0.24,0,0.43-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.49-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
+                        Mantenimiento a Demanda
+                    </h4>
+                    <p>El ecosistema no tiene mensualidades de nuestra parte. Queda en automático. <strong>Solo si a futuro usted requiere algún ajuste técnico o actualización</strong>, pagaría un valor mínimo entre $45.000 y $69.000 COP.</p>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div style="margin-top: 2rem; text-align: center;">
+                <p style="color: #fff; font-size: 1.2rem; margin-bottom: 1.5rem; font-weight: 600;">Cerremos el trato y arranquemos.</p>
+                <a href="https://wa.me/573012800024?text=Hola%20Cristian%20inciemos%20con%20la%20fase%201" class="btn btn-primary" target="_blank">
+                    <svg style="width: 20px; margin-right: 10px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM17.07 16.42C16.86 17.01 15.98 17.55 15.33 17.68C14.85 17.78 14.13 17.85 11.51 16.76C8.16 15.37 6 11.93 5.84 11.72C5.68 11.51 4.54 9.99 4.54 8.41C4.54 6.83 5.34 6.06 5.66 5.73C5.92 5.46 6.37 5.34 6.8 5.34C6.93 5.34 7.05 5.35 7.16 5.35C7.5 5.37 7.67 5.39 7.89 5.92C8.16 6.56 8.8 8.13 8.88 8.29C8.96 8.45 9.07 8.66 8.96 8.87C8.86 9.08 8.78 9.19 8.62 9.37C8.46 9.56 8.31 9.69 8.16 9.88C8 10.07 7.82 10.27 8.03 10.63C8.24 10.99 8.8 11.9 9.63 12.63C10.69 13.57 11.55 13.88 11.92 14.04C12.29 14.2 12.68 14.17 12.92 13.91C13.24 13.56 13.61 13.01 13.98 12.48C14.27 12.06 14.62 12.01 14.99 12.15C15.36 12.29 17.33 13.26 17.72 13.46C18.11 13.65 18.38 13.76 18.48 13.92C18.59 14.08 18.59 14.87 18.28 15.66L17.07 16.42Z"/></svg>
+                    Pedir Activación (WhatsApp)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container" style="padding: 1rem 0;">
+            <p>Red Sapien Technology © 2026 | Confidencial para Edwin Arroyave</p>
+        </div>
+    </footer>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 500);
+            }, 1800); // Tiempo extra para que lea "Calibrando Ecosistema"
+        });
+        document.body.style.overflow = 'hidden';
+
+        // Animación de Scroll
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
